@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Discover our exclusive collection of sleeveless jackets and accessories. Shop now for great deals!">
+    <meta name="keywords" content="Quilted Jackets, Sleeveless Jackets, Fashion, Sale">
+    <meta name="author" content="My Karachi Team">
+    <title>Product Page</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(2px);
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .navbar img {
+            height: 80px;
+            width: auto;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+
+        /* Navigation links styles */
+        ul {
+            display: flex;
+            list-style: none;
+            flex-grow: 1;
+            justify-content: start;
+        }
+
+        li {
+            padding: 0 20px;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+
+        ul li a:hover {
+            color: #f4a261;
+        }
+
+        .input-wrapper input {
+            background-color: #eee;
+            border: none;
+            padding: 1rem;
+            font-size: 1rem;
+            border-radius: 1rem;
+            color: lightcoral;
+            box-shadow: 0 0.4rem #dfd9d9;
+            cursor: pointer;
+            width: 50%;
+        }
+
+        .input-wrapper input:focus {
+            outline-color: rgb(214, 168, 16);
+        }
+
+        .input-wrapper img {
+            height: 30px;
+            width: auto;
+            cursor: pointer;
+
+        }
+
+
+        /* Adjust the main container to start after the sidebar */
+        .container {
+            padding: 80px 20px;
+            /* Reduced padding for mobile */
+            padding-top: 100px;
+
+        }
+
+        .container h1 {
+            text-align: center;
+        }
+
+
+        .product-grid {
+            display: flex;
+            gap: 30px;
+            /* Reduced gap for mobile */
+            justify-content: center;
+            /* Center items on mobile */
+            flex-wrap: wrap;
+            /* Allow wrapping for smaller screens */
+        }
+
+        .product-card {
+            position: relative;
+            /* Set positioning context for the button */
+            width: 45%;
+            /* Adjusted for smaller screens */
+            max-width: 200px;
+            /* Set a maximum width */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* Add transition for smooth effect */
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            /* Scale up on hover */
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+            /* Shadow effect on hover */
+            cursor: pointer;
+            /* Change cursor to pointer */
+        }
+
+        .product-image {
+            width: 100%;
+            /* Make image responsive */
+            height: auto;
+            /* Maintain aspect ratio */
+            transition: opacity 0.3s ease;
+            /* Smooth opacity transition */
+        }
+
+        /* Overlay styles */
+        .overlay {
+            position: absolute;
+            /* Position it absolutely within the card */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Semi-transparent black */
+            opacity: 0;
+            /* Hidden by default */
+            transition: opacity 0.3s ease;
+            /* Smooth transition */
+        }
+
+        .product-card:hover .overlay {
+            opacity: 1;
+            /* Show overlay on hover */
+        }
+
+        .product-info {
+            padding: 10px;
+        }
+
+        .product-info h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .product-info .price {
+            color: #f00;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .product-info .old-price {
+            text-decoration: line-through;
+            color: #aaa;
+        }
+
+        .add-to-cart {
+            position: absolute;
+            /* Position the button absolutely */
+            top: 50%;
+            /* Center vertically */
+            left: 50%;
+            /* Center horizontally */
+            transform: translate(-50%, -50%);
+            /* Adjust to center */
+            background-color: rgba(0, 0, 0, 0.7);
+            /* Semi-transparent background */
+            color: white;
+            /* Text color */
+            border: none;
+            /* No border */
+            padding: 10px 20px;
+            /* Padding for the button */
+            border-radius: 5px;
+            /* Rounded corners */
+            display: none;
+            /* Hide by default */
+        }
+
+        .product-card:hover .add-to-cart {
+            display: block;
+            /* Show button on hover */
+        }
+
+        .product-image {
+            width: 100%;
+            /* Make image responsive */
+            height: auto;
+            /* Maintain aspect ratio */
+            transition: opacity 0.3s ease;
+            /* Smooth opacity transition */
+        }
+
+        .product-card:hover .product-image {
+            opacity: 0.5;
+            /* Lower opacity on hover */
+        }
+
+        .add-to-cart {
+            position: absolute;
+            /* Position the button absolutely */
+            top: 50%;
+            /* Center vertically */
+            left: 50%;
+            /* Center horizontally */
+            transform: translate(-50%, -50%);
+            /* Adjust to center */
+            background-color: rgba(0, 0, 0, 0.7);
+            /* Semi-transparent background */
+            color: white;
+            /* Text color */
+            border: none;
+            /* No border */
+            padding: 10px 20px;
+            /* Padding for the button */
+            border-radius: 5px;
+            /* Rounded corners */
+            display: none;
+            /* Hide by default */
+        }
+
+        .product-card:hover .add-to-cart {
+            display: block;
+            /* Show button on hover */
+        }
+
+
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product-info {
+            padding: 10px;
+        }
+
+        .product-info h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .product-info .price {
+            color: #f00;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .product-info .old-price {
+            text-decoration: line-through;
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            .product-card {
+                width: 45%;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+            }
+
+            .navbar li {
+                padding: 10px;
+            }
+
+            .navbar li a {
+                font-size: 14px;
+            }
+
+            .input-wrapper {
+                display: none;
+            }
+
+            .container {
+                margin-top: 120px;
+
+            }
+
+        }
+
+        @media (max-width: 480px) {
+            .product-card {
+                width: 100%;
+            }
+
+            .navbar img {
+                height: 50px;
+            }
+
+            .navbar {
+                padding: 10px;
+            }
+        }
+
+
+
+        footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            /* Space between sections */
+            align-items: flex-start;
+            /* Align items to the top */
+            background-color: black;
+            width: 100%;
+            padding: 20px;
+            color: white;
+        }
+
+        .footer-section {
+            flex: 1;
+            /* Allow each section to take equal space */
+            padding: 10px;
+            /* Add some padding */
+        }
+
+        .footer-bottom {
+            width: 100%;
+            /* Full width for the bottom section */
+            text-align: center;
+            /* Center the text */
+            margin-top: 20px;
+            /* Optional: space above the bottom section */
+            position: relative;
+            /* Positioning context */
+            bottom: 0;
+            /* Align at the bottom */
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            /* Remove default margin */
+            color: white;
+            /* Ensure text color is white */
+        }
+
+        .footer-section h3 {
+            margin-top: 0;
+            /* Remove top margin for better alignment */
+        }
+
+
+        footer a {
+            text-decoration: none;
+            color: gray;
+        }
+
+        footer a:hover {
+            color: #f4a261;
+        }
+
+        .banner {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .Subscribe {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .sub-input {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-sub {
+            /* width: 100%; */
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            /* border-radius: 5px; */
+            cursor: pointer;
+            /* margin-top: 20px; Add some space between input and button */
+            height: 58px;
+        }
+
+        /* Subscribe Input */
+        .sub-input input {
+            width: 20%;
+            /* Full width on mobile */
+            height: 50px;
+        }
+
+
+        /* .btn-sub {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        } */
+
+        @media (max-width: 768px) {
+            .sub-input input {
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sub-input input {
+                width: 90%;
+            }
+        }
+
+
+
+        .top {
+            display: flex;
+        }
+
+        .top h1 {
+            margin-left: 400px;
+        }
+
+        .filter-btn {
+            height: 50px;
+            padding-bottom: 50px;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+            position: relative;
+            /* Ensure positioning context for the underline */
+        }
+
+        .filter-btn::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #333;
+            /* Color of the underline */
+            transition: width 0.3s ease;
+            /* Smooth transition */
+        }
+
+        .filter-btn:hover::before {
+            width: 100%;
+            /* Underline expands to full width on hover */
+        }
+
+        .filter-btn h2 {
+            color: #333;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <img src="Leonardo_Phoenix_Design_a_powerful_logo_featuring_a_striking_b_1-removebg-preview.png"
+                alt="Charcoal Logo">
+            <ul>
+                <li><a href="main.html">Home</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="#">Clearance Sale</a></li>
+            </ul>
+            <div class="input-wrapper">
+                <img src="shopping-cart.png" alt="shopping-cart">
+                <input type="text" placeholder="Search...">
+
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="top">
+                <button class="filter-btn">
+                    <h2>Filter</h2>
+                </button>
+                <h1>Our Products</h1>
+            </div>
+
+            <div class="product-grid">
+                <!-- Product Cards -->
+                <div class="product-card">
+                    <img src="p5.jpg" alt="Quilted Jacket Black" class="product-image">
+                    <div class="product-info">
+                        <h3>Quilted Sleeveless Jacket Black</h3>
+                        <p class="price">Rs. 7,196.00 <span class="old-price">Rs. 8,995.00</span></p>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="p3.jpg" alt="Quilted Jacket Navy">
+                    <div class="product-info">
+                        <h3>QUILTED SLEEVELESS JACKET NAVY</h3>
+                        <p class="price">Rs. 7,196.00 <span class="old-price">Rs. 8,995.00</span></p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="p2.jpg" alt="Quilted Jacket Olive">
+                    <div class="product-info">
+                        <h3>QUILTED SLEEVELESS JACKET OLIVE</h3>
+                        <p class="price">Rs. 7,196.00 <span class="old-price">Rs. 8,995.00</span></p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="p4.jpg" alt="Puffer Jacket Light Khaki">
+                    <div class="product-info">
+                        <h3>PUFFER SLEEVELESS JACKET LIGHT KHAKI</h3>
+                        <p class="price">Rs. 7,996.00 <span class="old-price">Rs. 9,995.00</span></p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="p6.jpg" alt="Puffer Jacket Grey">
+                    <div class="product-info">
+                        <h3>PUFFER SLEEVELESS JACKET GREY</h3>
+                        <p class="price">Rs. 7,996.00 <span class="old-price">Rs. 9,995.00</span></p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="p7.jpg" alt="Puffer Jacket Navy">
+                    <div class="product-info">
+                        <h3>PUFFER SLEEVELESS JACKET NAVY</h3>
+                        <p class="price">Rs. 7,996.00 <span class="old-price">Rs. 9,995.00</span></p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="p8.jpg" alt="Wool Quilted Sleeveless Reversible Jacket Dark Grey">
+                    <div class="product-info">
+                        <h3>WOOL QUILTED SLEEVELESS REVERSIBLE JACKET DARK GREY</h3>
+                        <p class="price">Rs. 7,996.00 <span class="old-price">Rs. 9,995.00</span></p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="p9.jpg" alt="Wool Quilted Sleeveless Reversible Jacket Charcoal Grey">
+                    <div class="product-info">
+                        <h3>WOOL QUILTED SLEEVELESS REVERSIBLE JACKET CHARCOAL GREY</h3>
+                        <p class="price">Rs. 7,996.00 <span class="old-price">Rs. 9,995.00</span></p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="p10.jpg" alt="Wool Quilted Sleeveless Reversible Jacket Charcoal Beige">
+                    <div class="product-info">
+                        <h3>WOOL QUILTED SLEEVELESS REVERSIBLE JACKET CHARCOAL BEIGE</h3>
+                        <p class="price">Rs. 7,996.00 <span class="old-price">Rs. 9,995.00</span></p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="p11.jpg" alt="Wool Quilted Sleeveless Reversible Jacket Brown Khaki">
+                    <div class="product-info">
+                        <h3>WOOL QUILTED SLEEVELESS REVERSIBLE JACKET BROWN KHAKI</h3>
+                        <p class="price">Rs. 7,996.00 <span class="old-price">Rs. 9,995.00</span></p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="p1.jpg" alt="Denim Full Sleeve Jacket Blue">
+                    <div class="product-info">
+                        <h3>DENIM FULL SLEEVE JACKET BLUE</h3>
+                        <p class="price">Rs. 6,796.00 <span class="old-price">Rs. 8,495.00</span></p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="p12.jpg" alt="Wool Quilted Sleeveless Reversible Jacket Black Check">
+                    <div class="product-info">
+                        <h3>WOOL QUILTED SLEEVELESS REVERSIBLE JACKET BLACK CHECK</h3>
+                        <p class="price">Rs. 7,996.00 <span class="old-price">Rs. 9,995.00</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <section id="page6" class="page">
+            <div class="banner">
+                <h1 class="Subscribe">Subscribe to Newsletter</h1>
+                <div class="sub-input">
+                    <input type="text" placeholder="Enter your email">
+                    <button class="btn-sub">Subscribe</button>
+                </div>
+            </div>
+
+            <footer>
+                <div class="footer-section">
+                    <h3>Sales Support:</h3>
+                    <p>Email: <a href="mailto:onlinesales@charcoal.com.pk">onlinesales@charcoal.com.pk</a></p>
+                    <p>Phone: <a href="">+92 314 - 2458194</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Customer Care:</h3>
+                    <p>Email: <a href="mailto:customercare@charcoal.com.pk">customercare@charcoal.com.pk</a></p>
+                    <p>Phone: <a href="">+92 314 - 2458194</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Useful Links:</h3>
+                    <p> <a href="">Store Locator</a></p>
+                    <p><a href="">FAQ's</a></p>
+                    <p><a href="">Return Exchange</a></p>
+
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024, Charcoal Clothing. Powered by IT Brain.</p>
+                </div>
+            </footer>
+        </section>
+    </main>
+
+    <script>
+
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        var inputField = document.querySelector(".input-wrapper input");
+        var productCards = document.querySelectorAll(".product-card");
+
+        inputField.addEventListener("input", function () {
+            var inputValue = inputField.value.toLowerCase();
+            productCards.forEach(function (card) {
+                var cardTitle = card.querySelector("h3").textContent.toLowerCase();
+                if (cardTitle.includes(inputValue)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
+
+        var logo = document.querySelector("nav img");
+
+        logo.addEventListener("click", function () {
+            window.location.href = "main.html";
+        });
+
+    </script>
+</body>
+
+</html>
